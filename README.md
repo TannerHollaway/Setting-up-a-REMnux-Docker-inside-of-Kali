@@ -23,6 +23,8 @@ Deploy REMnux as an isolated Docker container inside Kali Linux, with a shared v
 
 ### 1. Update Kali
 
+Ensures the system has the latest packages before installing anything new. Prevents dependency issues down the line.
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
@@ -32,6 +34,8 @@ sudo apt update && sudo apt upgrade -y
 ---
 
 ### 2. Install and Start Docker
+
+Installs Docker, starts the service, enables it on boot, and adds the current user to the Docker group so sudo isn't required for every command.
 
 ```bash
 sudo apt install -y docker.io
@@ -47,6 +51,8 @@ sudo systemctl status docker
 
 ### 3. Pull the REMnux Image
 
+Downloads the REMnux image from Docker Hub. Docker builds the container from it. The `docker images` command confirms it downloaded successfully.
+
 ```bash
 docker pull remnux/remnux-distro:focal
 docker images
@@ -57,6 +63,8 @@ docker images
 ---
 
 ### 4. Create Shared Sample Folder and Launch Container
+
+Creates a folder on the Kali desktop that acts as a bridge between Kali and REMnux. The `-v` flag links that folder to a path inside the container. Anything placed there on Kali is instantly accessible inside REMnux and vice versa.
 
 ```bash
 mkdir ~/Desktop/REMnuxSamples
@@ -72,7 +80,7 @@ docker run -it --name remnux \
 
 ### 5. Verify REMnux Tools
 
-Inside the container:
+Confirms key analysis tools are present. `strings` extracts readable text from binaries, `floss` finds hidden/obfuscated strings malware authors try to conceal, and `python3` confirms the scripting environment is available.
 
 ```bash
 strings --version
@@ -86,6 +94,8 @@ floss --help 2>&1 | head -5
 
 ### 6. Exit and Manage the Container
 
+Exits the container and confirms it still exists in a stopped state. The container is not deleted — it can be restarted at any time.
+
 ```bash
 exit
 docker ps -a
@@ -97,6 +107,8 @@ docker ps -a
 
 ### 7. Restart the Container
 
+Restarts the stopped container and reattaches to it. This is the command used to re-enter REMnux in every future session.
+
 ```bash
 docker start -ai remnux
 ```
@@ -107,13 +119,11 @@ docker start -ai remnux
 
 ### 8. Confirm Shared Volume
 
-Inside the container:
+Creates a test file inside the container and verifies it appears in the REMnuxSamples folder on Kali, confirming the shared volume is working correctly.
 
 ```bash
 touch /home/remnux/samples/test.txt
 ```
-
-On Kali:
 
 ```bash
 ls ~/Desktop/REMnuxSamples
