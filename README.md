@@ -27,7 +27,7 @@ Deploy REMnux as an isolated Docker container inside Kali Linux, with a shared v
 sudo apt update && sudo apt upgrade -y
 ```
 
-![Kali Updated](kali-updated.png)
+![Kali Updated](image/kali-updated.png)
 
 ---
 
@@ -41,7 +41,7 @@ sudo usermod -aG docker $USER && newgrp docker
 sudo systemctl status docker
 ```
 
-![Docker Active](docker-active.png)
+![Docker Active](image/docker-active.png)
 
 ---
 
@@ -52,7 +52,7 @@ docker pull remnux/remnux-distro:focal
 docker images
 ```
 
-![REMnux Pulled](remnux-pulled.png)
+![REMnux Pulled](image/remnux-pulled.png)
 
 ---
 
@@ -66,7 +66,7 @@ docker run -it --name remnux \
   remnux/remnux-distro:focal bash
 ```
 
-![REMnux Container Launched](remnux-container-launched.png)
+![REMnux Container Launched](image/remnux-container-launched.png)
 
 ---
 
@@ -80,7 +80,7 @@ python3 --version
 floss --help 2>&1 | head -5
 ```
 
-![REMnux Tools Verified](remnux-tools-verified.png)
+![REMnux Tools Verified](image/remnux-tools-verified.png)
 
 ---
 
@@ -91,7 +91,7 @@ exit
 docker ps -a
 ```
 
-![Docker PS Exited](docker-ps-exited.png)
+![Docker PS Exited](image/docker-ps-exited.png)
 
 ---
 
@@ -101,7 +101,7 @@ docker ps -a
 docker start -ai remnux
 ```
 
-![Docker Restarted](docker-restarted.png)
+![Docker Restarted](image/docker-restarted.png)
 
 ---
 
@@ -119,7 +119,7 @@ On Kali:
 ls ~/Desktop/REMnuxSamples
 ```
 
-![Shared Volume Confirmed](shared-volume-confirmed.png)
+![Shared Volume Confirmed](image/shared-volume-confirmed.png)
 
 ---
 
