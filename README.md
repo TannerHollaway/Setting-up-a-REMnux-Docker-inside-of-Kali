@@ -163,4 +163,4 @@ Docker was unaffected and continued running normally.
 
 ## Conclusion
 
-Successfully deployed REMnux inside a Docker container on Kali Linux with a shared volume for sample analysis. This setup gives a single VM the capability to perform both offensive security operations and blue team malware analysis without the overhead of running two full virtual machines.
+Deployed REMnux inside a Docker container on Kali Linux with a shared volume for sample analysis. The setup gives a single VM the capability to perform both offensive security operations and blue team malware analysis without the need of running two full virtual machines.
